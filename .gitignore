@@ -1,3 +1,5 @@
 /e3-cart-web/.project
 /e3-cart-web/.classpath
 /e3-cart-web/.settings
+/e3-content-interface/target
+/e3-content-interface/target/.gitignore
