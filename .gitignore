@@ -76,3 +76,8 @@
 /e3-sso/e3-sso-web/.settings
 /e3-sso/e3-sso-web/target
 /e3-sso/e3-sso-web/.classpath
+/e3-parent/e3-manager-web/.springBeans
+/e3-parent/e3-manager-web/.settings
+/e3-parent/e3-manager-web/target
+/e3-parent/e3-manager-web/.classpath
+/e3-parent/e3-manager-web/.project
