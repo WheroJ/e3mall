@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wheroj.e3.search.mapper.SearchMapper" >
+	<select id="selectAll" resultType="com.wheroj.common.pojo.SearchItem">
+		SELECT
+			i.id,
+			i.title,
+			i.sell_point,
+			i.price,
+			i.image,
+			c.`name` category_name 
+		FROM
+			tb_item i
+			LEFT JOIN tb_item_cat c ON c.id = i.cid;
+	</select>
+	
+	<select id="selectItem" parameterType="long" resultType="com.wheroj.common.pojo.SearchItem">
+		SELECT
+			i.id,
+			i.title,
+			i.sell_point,
+			i.price,
+			i.image,
+			c.`name` category_name 
+		FROM
+			tb_item i
+			LEFT JOIN tb_item_cat c ON c.id = i.cid
+		WHERE
+			i.id =  #{itemId};		
+	</select>
+</mapper>

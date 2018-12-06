@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd 
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd 
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd 
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd ">
+		<bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+			<constructor-arg name="brokerURL" value="tcp://192.168.25.190:61616" />
+		</bean>
+		<bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+			<constructor-arg name="targetConnectionFactory" ref="targetConnectionFactory" />
+		</bean>
+		
+		<bean id="activeMQTopic" class="org.apache.activemq.command.ActiveMQTopic">
+			<constructor-arg name="name" value="spring-topic" />
+		</bean>
+		<bean class="org.springframework.jms.core.JmsTemplate">
+			<constructor-arg name="connectionFactory" ref="connectionFactory"/>
+		</bean>
+		<bean id="messageListener" class="com.wheroj.e3.search.listener.ItemMessageListener" />
+		<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+			<property name="connectionFactory" ref="connectionFactory" />
+			<property name="destination" ref="activeMQTopic" />
+			<property name="messageListener" ref="messageListener" />
+		</bean>
+</beans>
