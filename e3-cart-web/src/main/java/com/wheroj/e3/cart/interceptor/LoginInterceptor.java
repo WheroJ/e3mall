@@ -20,12 +20,12 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (request.getAttribute("user") == null) {
 			TbUser user = userInfo.getUser(request);
 			if (user == null) {
-				//未登陆
-				if (!(request.getRequestURI().endsWith("/page/login")
-						|| request.getRequestURI().endsWith("/user/login"))) {
-					response.sendRedirect("http://localhost:8095/page/login");
-					return false;
-				}
+				//未登陆，将商品放入缓存中
+//				if (!(request.getRequestURI().endsWith("/page/login")
+//						|| request.getRequestURI().endsWith("/user/login"))) {
+//					response.sendRedirect("http://localhost:8095/page/login");
+//					return false;
+//				}
 			} else {
 				request.setAttribute("user", user);
 			}

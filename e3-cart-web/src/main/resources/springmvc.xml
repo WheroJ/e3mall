@@ -30,6 +30,7 @@
 		<dubbo:registry protocol="zookeeper" address="192.168.25.190:2181"/>
 		<dubbo:reference interface="com.wheroj.e3.cart.CartService" id="cartService"/>
 		<dubbo:reference interface="com.wheroj.e3.service.TokenService" id="tokenService"/>
+		<dubbo:reference interface="com.wheroj.e3.service.TbItemService" id="tbItemService"/>
 		
 		<mvc:interceptors>
 			<mvc:interceptor>

@@ -30,8 +30,10 @@ public class UserInfo {
 		String token = CookieUtils.getCookieValue(request, "token");
 		if (!StringUtils.isBlank(token)) {
 			Result<TbUser> result = tokenService.getUserByToken(token);
-			TbUser tbUser = result.getData();
-			return tbUser;
+			if (result.getStatus() == 200) {
+				TbUser tbUser = result.getData();
+				return tbUser;
+			}
 		}
 		return null;
 	}
