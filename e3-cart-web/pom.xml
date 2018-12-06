@@ -23,7 +23,7 @@
   	
   	<dependency>
   		<groupId>com.wheroj</groupId>
-  		<artifactId>e3-sso-service</artifactId>
+  		<artifactId>e3-sso-interface</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   	<!-- JSP相关 -->

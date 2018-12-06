@@ -28,6 +28,7 @@ var CART = {
 		var total = 0;
 		$(".itemnum").each(function(i,e){
 			var _this = $(e);
+//			$(e).parent().parent().siblings(".pSubtotal")
 			total += (eval(_this.attr("itemPrice")) * 10000 * eval(_this.val())) / 10000;
 		});
 		$("#allMoney2").html(new Number(total/100).toFixed(2)).priceFormat({ //价格格式化插件

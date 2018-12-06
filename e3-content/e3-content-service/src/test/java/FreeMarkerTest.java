@@ -21,7 +21,7 @@ public class FreeMarkerTest {
 		//2、创建一个Configuration对象
 		Configuration configuration = new Configuration(Configuration.getVersion());
 		//3、设置模板文件保存的目录
-		configuration.setDirectoryForTemplateLoading(new File("C:\\This is D\\testworkspace\\e3-parent\\e3-content\\e3-content-service\\src\\test\\resources\\ftl"));
+		configuration.setDirectoryForTemplateLoading(new File("C:\\This is D\\code\\e3mall\\e3-content\\e3-content-service\\src\\test\\resources\\ftl"));
 		//4、模板文件的编码格式，一般就是utf-8
 		configuration.setDefaultEncoding("utf-8");
 		//5、加载一个模板文件，创建一个模板对象。
@@ -30,7 +30,7 @@ public class FreeMarkerTest {
 		Map<String, String> data = new HashMap<>();
 		data.put("hello", "hello freemarker!");
 		//7、创建一个Writer对象，指定输出文件的路径及文件名。
-		Writer out = new FileWriter(new File("C:\\This is D\\testworkspace\\e3-parent\\e3-content\\e3-content-service\\src\\test\\resources\\ftl\\hello.txt"));
+		Writer out = new FileWriter(new File("C:\\This is D\\code\\e3mall\\e3-content\\e3-content-service\\src\\test\\resources\\ftl\\hello.txt"));
 		//8、生成静态页面
 		template.process(data, out);
 		//9、关闭流
@@ -40,7 +40,7 @@ public class FreeMarkerTest {
 	@Test
 	public void testFreeMarkerGrammar() throws Exception {
 		Configuration configuration = new Configuration(Configuration.getVersion());
-		configuration.setDirectoryForTemplateLoading(new File("C:\\This is D\\testworkspace\\e3-parent\\e3-content\\e3-content-service\\src\\test\\resources\\ftl"));
+		configuration.setDirectoryForTemplateLoading(new File("C:\\This is D\\code\\e3mall\\e3-content\\e3-content-service\\src\\test\\resources\\ftl"));
 		configuration.setDefaultEncoding("utf-8");
 		Template template = configuration.getTemplate("Student.ftl");
 		
@@ -65,7 +65,7 @@ public class FreeMarkerTest {
 		}
 		dataModel.put("stuList", stuList);
 		dataModel.put("hello", "hello freemarker!");
-		FileWriter fileWriter = new FileWriter(new File("C:\\This is D\\testworkspace\\e3-parent\\e3-content\\e3-content-service\\src\\test\\resources\\ftl\\student.html"));
+		FileWriter fileWriter = new FileWriter(new File("C:\\This is D\\code\\e3mall\\e3-content\\e3-content-service\\src\\test\\resources\\ftl\\student.html"));
 		template.process(dataModel, fileWriter);
 		fileWriter.close();
 	}
