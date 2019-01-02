@@ -21,7 +21,8 @@ public class LoginController {
 	private LoginService loginService;
 	
 	@RequestMapping("/page/login")
-	public String showLogin() {
+	public String showLogin(String redirect, HttpServletRequest request) {
+		request.setAttribute("redirect", redirect);
 		return "login";
 	}
 	
