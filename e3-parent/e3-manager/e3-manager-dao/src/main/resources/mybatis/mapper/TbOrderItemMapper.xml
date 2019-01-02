@@ -255,4 +255,31 @@
       pic_path = #{picPath,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  
+  <!--   consum sqls  -->
+  <!-- atabaseId="mysql" -->
+  <insert id="insertByBatch" parameterType="java.util.List">
+	insert into tb_order_item (id, item_id, order_id, 
+      num, title, price, total_fee, 
+      pic_path)
+    values 
+	<foreach collection="list" item="item" index="index" separator=",">
+		 (#{item.id,jdbcType=VARCHAR}, #{item.itemId,jdbcType=VARCHAR}, #{item.orderId,jdbcType=VARCHAR}, 
+	      #{item.num,jdbcType=INTEGER}, #{item.title,jdbcType=VARCHAR}, #{item.price,jdbcType=BIGINT}, #{item.totalFee,jdbcType=BIGINT}, 
+	      #{item.picPath,jdbcType=VARCHAR})
+	</foreach>
+  </insert>
+  
+  <!-- <insert id="insertByBatch" parameterType="java.util.List" databaseId="oracle">
+	insert into tb_order_item (id, item_id, order_id, 
+      num, title, price, total_fee, 
+      pic_path)
+	<foreach collection="list" item="item" index="index" separator=",">
+	  select
+		 #{item.id,jdbcType=VARCHAR}, #{item.itemId,jdbcType=VARCHAR}, #{item.orderId,jdbcType=VARCHAR}, 
+	     #{item.num,jdbcType=INTEGER}, #{item.title,jdbcType=VARCHAR}, #{item.price,jdbcType=BIGINT}, #{item.totalFee,jdbcType=BIGINT}, 
+	     #{item.picPath,jdbcType=VARCHAR}
+	  from dual
+	</foreach>
+  </insert> -->
 </mapper>

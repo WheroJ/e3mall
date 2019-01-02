@@ -27,4 +27,7 @@ public interface TbOrderItemMapper {
     int updateByPrimaryKeySelective(TbOrderItem record);
 
     int updateByPrimaryKey(TbOrderItem record);
+    
+//  ======  consum  methods  ===========
+    void insertByBatch(List<TbOrderItem> orderItems);
 }
