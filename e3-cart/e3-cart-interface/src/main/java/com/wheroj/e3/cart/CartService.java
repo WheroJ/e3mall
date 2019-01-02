@@ -16,4 +16,6 @@ public interface CartService {
 	public Long removeProduct(String userId, long itemId);
 	
 	public Long updateProduct(String userId, long itemId, int num);
+	
+	public void clearCart(Long userId);
 }

@@ -95,4 +95,9 @@ public class CartServiceImpl implements CartService {
 		}
 		return 0l;
 	}
+
+	@Override
+	public void clearCart(Long userId) {
+		redisTemplate.delete(REDIS_CART_PRE + ":" + userId);
+	}
 }
